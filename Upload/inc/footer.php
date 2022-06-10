@@ -22,10 +22,8 @@ echo "<!-- Footer -->
     <p class=\"text-center text-secondary\">&copy; 2022 OpenForum</p>
   </footer>
 </div>
-
 <!-- Bootstrap JS -->
 <script src=\"inc/bootstrap/js/bootstrap.bundle.min.js\"></script>
-
 <!-- Light Switch -->
 <script src=\"inc/switch.js\"></script>";
 

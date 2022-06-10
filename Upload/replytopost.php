@@ -62,16 +62,13 @@ if (!$_POST) {
 
 		echo "
 		<body>
-		";
+		<div class=\"container\">
+		<div class=\"row\">
+        ";
+        // add switch
 
-		// switch
-		
         include("inc/switch.php");
-
-        // echo add reply
-
-        echo "<div class=\"container\">		
-        <div class=\"row\">
+        echo "
 		<h1 class=\"mt-1\"><i class=\"fa-solid fa-comment-medical\"></i> Post Your Reply in $topic_title</h1>
 		<form class=\"was-validated\" method=\"post\" action=\"".$_SERVER["PHP_SELF"]."\">
 		<div class=\"mb-3\">
@@ -98,7 +95,8 @@ if (!$_POST) {
 		<p><button class=\"btn btn-primary\" type=\"submit\"><i class=\"fa-solid fa-plus\"></i> Add Post</button></p>
 		</form>
         </div>
-        </div>";
+        </div>
+        ";
 
         // add footer
 

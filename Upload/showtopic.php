@@ -52,8 +52,7 @@ if (mysqli_num_rows($verify_topic_res) < 1) {
 
 	// create the display string
 
-	$display_block = "
-	<p>Showing posts for the <strong>".$topic_title."</strong> topic:</p>
+	$display_block = "    <p>Showing posts for the <strong>".$topic_title."</strong> topic:</p>
 	<table width=\"100%\" cellpadding=\"3\" cellspacing=\"1\" border=\"1\" class=\"table table-responsive\">
 	<tr>
 	<th>AUTHOR</th>
@@ -89,15 +88,13 @@ if (mysqli_num_rows($verify_topic_res) < 1) {
 
 	// close up the table
 
-	$display_block .= "</table>";
+	$display_block .= "
+	</table>";
 
 }
 
 ?>
-<?php
-
-// if empty
-
+<?php // if empty
 if (empty($topic_title)) {
 
   $topic_title = '';
@@ -105,48 +102,27 @@ if (empty($topic_title)) {
 }
 
 // page title
-
 $title = "Posts in ".$topic_title." Topic";
-
 // add header
-
 include("inc/header.php");
-
 ?>
 
 <body>
-
-<?php
-
-// add switch
-
-include("inc/switch.php");
-
-?>
-
 <div class="container">		
-<div class="row">
+ <div class="row">
+<?php // add switch
+include("inc/switch.php");
+?>
 <h1 class="mt-1"><i class="fa-solid fa-comment-dots"></i> Posts in Topic</h1>
-
-<?php 
-
-// display block
-
+<?php // display block
 echo $display_block; 
-
 ?>
 
-<p><a class="btn btn-primary" href="index.php" role="button"><i class="fa-solid fa-list"></i> Topic List</a></p>
+	<p><a class="btn btn-primary" href="index.php" role="button"><i class="fa-solid fa-list"></i> Topic List</a></p>
+ </div>
 </div>
-</div>
-
-<?php
-
-// add footer
-
+<?php // add footer
 include("inc/footer.php");
-
 ?>
-
 </body>
 </html>

@@ -20,15 +20,19 @@ echo "
 <body>
 ";
 
+
+
+// echo add topic
+
+echo "  <div class=\"container\">		
+    <div class=\"row\">
+  ";
+
 // add switch
 
 include("inc/switch.php");
 
-// echo add topic
-
-echo "<div class=\"container\">		
-<div class=\"row\">
-<h1 class=\"mt-1\"><i class=\"fa-solid fa-comment-medical\"></i> Add a Topic</h1>
+echo "<h1 class=\"mt-1\"><i class=\"fa-solid fa-comment-medical\"></i> Add a Topic</h1>
 <form class=\"was-validated\" method=\"post\" action=\"do_addtopic.php\">
 <div class=\"mb-3\">
 <label for=\"FormControlInputEmail\" class=\"form-label\">Email address:</label>

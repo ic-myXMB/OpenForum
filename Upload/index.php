@@ -28,8 +28,7 @@ if (mysqli_num_rows($get_topics_res) < 1) {
 
 	// create the display string
 
-	$display_block = "
-	<table width=\"100%\" cellpadding=\"3\" cellspacing=\"1\" border=\"1\" class=\"table table-responsive\">
+	$display_block = "<table width=\"100%\" cellpadding=\"3\" cellspacing=\"1\" border=\"1\" class=\"table table-responsive\">
 	<tr>
 	<th>TOPIC TITLE</th>
 	<th class=\"text-center\"># of POSTS</th>
@@ -76,56 +75,32 @@ if (mysqli_num_rows($get_topics_res) < 1) {
 
 	// close up the table
 
-	$display_block .= "</table>";
+	$display_block .= "
+	</table>
+	";
 	
 }
 
 ?>
-<?php
-
-// page title
-
+<?php // page title
 $title = "Topics in My Forum";
-
 // include header
-
 include("inc/header.php");
-
 ?>
 
 <body>
-
-<?php
-
-// add switch
-
-include("inc/switch.php");
-
-?>
-
 <div class="container">		
-<div class="row">
+ <div class="row">
+<?php // add switch
+include("inc/switch.php"); ?>
 <h1 class="mt-1"><i class="fa-solid fa-comment-dots"></i> Forum Topics</h1>
-<p>Showing topics for the <strong>Forum</strong>:</p>
-<?php
-
-// display block
-
- echo $display_block; 
-
- ?>
-
+	<p>Showing topics for the <strong>Forum</strong>:</p>
+	<?php // display block
+    echo $display_block; ?>
 <p><a class="btn btn-primary" href="addtopic.php" role="button"><i class="fa-solid fa-plus"></i> Add Topic</a></p>
 </div>
 </div>
-
-<?php
-
-// add footer
-
-include("inc/footer.php");
-
-?>
-
+<?php // add footer
+include("inc/footer.php");?>
 </body>
 </html>
