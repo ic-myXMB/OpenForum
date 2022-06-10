@@ -45,9 +45,6 @@ mysqli_close($mysqli);
 
 $display_block = "<div class=\"alert alert-success\" role=\"alert\">The <strong>".$_POST["topic_title"]."</strong> topic has been created.</div>";
 
-?>
-
-<?php
 
 // page title
 
@@ -57,23 +54,21 @@ $title = "New Topic Added";
 
 include("inc/header.php");
 
-?>
+// echo open body container and row
 
+echo "
 <body>
-<div class="container">		
-<div class="row">
-
-<?php
+<div class=\"container\">		
+<div class=\"row\">
+";
 
 // add switch
 
 include("inc/switch.php");
 
-?>
-
-<h1 class="mt-1"><i class="fa-solid fa-comment-dots"></i> New Topic Added</h1>
-
-<?php
+echo "
+<h1 class=\"mt-1\"><i class=\"fa-solid fa-comment-dots\"></i> New Topic Added</h1>
+";
 
 // echo block
 
@@ -83,18 +78,22 @@ echo $display_block;
 
 header( "Refresh:1; url= showtopic.php?topic_id=".$topic_id, true, 303);
 
-?>
+// echo close container and row
 
+echo "
 </div>
 </div>
-
-<?php
+";
 
 // add footer
 
 include("inc/footer.php");
 
-?>
+// echo close body and html
 
+echo "
 </body>
 </html>
+";
+
+?>

@@ -93,8 +93,8 @@ if (mysqli_num_rows($verify_topic_res) < 1) {
 
 }
 
-?>
-<?php // if empty
+// topic title if empty
+
 if (empty($topic_title)) {
 
   $topic_title = '';
@@ -102,27 +102,51 @@ if (empty($topic_title)) {
 }
 
 // page title
+
 $title = "Posts in ".$topic_title." Topic";
+
 // add header
+
 include("inc/header.php");
-?>
 
+// echo body open container row
+
+echo "
 <body>
-<div class="container">		
- <div class="row">
-<?php // add switch
-include("inc/switch.php");
-?>
-<h1 class="mt-1"><i class="fa-solid fa-comment-dots"></i> Posts in Topic</h1>
-<?php // display block
-echo $display_block; 
-?>
+<div class=\"container\">		
+ <div class=\"row\">
+";
 
-	<p><a class="btn btn-primary" href="index.php" role="button"><i class="fa-solid fa-list"></i> Topic List</a></p>
+// add switch
+
+include("inc/switch.php");
+
+// echo h1
+
+echo "<h1 class=\"mt-1\"><i class=\"fa-solid fa-comment-dots\"></i> Posts in Topic</h1>
+";
+
+// echo display block
+
+echo $display_block; 
+
+// echo button and close container / row
+
+echo "
+	<p><a class=\"btn btn-primary\" href=\"index.php\" role=\"button\"><i class=\"fa-solid fa-list\"></i> Topic List</a></p>
  </div>
 </div>
-<?php // add footer
+";
+
+// add footer
+
 include("inc/footer.php");
-?>
+
+// echo closing body and html
+
+echo "
 </body>
 </html>
+";
+
+?>

@@ -20,8 +20,6 @@ echo "
 <body>
 ";
 
-
-
 // echo add topic
 
 echo "  <div class=\"container\">		
