@@ -25,7 +25,7 @@ upload files contained in the "Upload" directory:
 
 Edit:
 
-config/config.php
+config/connect.php
 
 you only need to edit this:
 
