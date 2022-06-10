@@ -60,6 +60,8 @@ include("inc/header.php");
 ?>
 
 <body>
+<div class="container">		
+<div class="row">
 
 <?php
 
@@ -69,8 +71,6 @@ include("inc/switch.php");
 
 ?>
 
-<div class="container">		
-<div class="row">
 <h1 class="mt-1"><i class="fa-solid fa-comment-dots"></i> New Topic Added</h1>
 
 <?php
