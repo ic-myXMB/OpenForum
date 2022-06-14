@@ -92,7 +92,7 @@ if (mysqli_num_rows($verify_topic_res) < 1) {
 	// create the display string
 
 		$display_block = "
-		<p>Showing posts for the <strong>".$topic_title."</strong> topic:</p>
+		<p>Showing all posts for the <strong>".$topic_title."</strong> topic:</p>
 		<table width=\"100%\" cellpadding=\"3\" cellspacing=\"1\" border=\"1\">
 		<tr>
 		<th>AUTHOR</th>
