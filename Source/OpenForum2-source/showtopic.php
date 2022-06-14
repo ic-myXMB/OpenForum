@@ -117,10 +117,10 @@ if (mysqli_num_rows($verify_topic_res) < 1) {
 		<a href='replytopost.php?post_id=".$post_id."'><strong>REPLY TO POST</strong></a>
         <a href=\"javascript:void(0);\" onclick=\"document.getElementById('deleteForm').submit();\" role=\"button\"><strong>DELETE POST</strong></a>
 		<form id=\"deleteForm\" method=\"POST\" action=\"delete.php?post_id=".$post_id."\">
-		<input type=\"hidden\" name=\"topic_id\" value=\"".$topic_id."\">
-		<input type=\"hidden\" name=\"topic_title\" value=\"".$topic_title."\">		
-		<input type=\"hidden\" name=\"post_id\" value=\"".$post_id."\">	
-		<input type=\"hidden\" name=\"post_owner\" value=\"".$post_owner."\">			
+		<input type=\"hidden\" name=\"topic_id\" value=\"$topic_id\">
+		<input type=\"hidden\" name=\"topic_title\" value=\"$topic_title\">		
+		<input type=\"hidden\" name=\"post_id\" value=\"$post_id\">	
+		<input type=\"hidden\" name=\"post_owner\" value=\"$post_owner\">			
 		</td>
 		</tr>";
 

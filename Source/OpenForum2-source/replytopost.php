@@ -107,8 +107,8 @@ if (!$do_page) {
 		<input type=\"text\" name=\"post_owner\" size=\"40\" maxlength=\"150\"></p>
 		<p><strong>Post Text:</strong><br/>
 		<textarea name=\"post_text\" rows=\"8\" cols=\"40\" wrap=\"virtual\"></textarea>
-		<input type=\"hidden\" name=\"topic_id\" value=\"".$topic_id."\">
-		<input type=\"hidden\" name=\"category_id\" value=\"".$category_id."\">		
+		<input type=\"hidden\" name=\"topic_id\" value=\"$topic_id\">
+		<input type=\"hidden\" name=\"category_id\" value=\"$category_id\">		
 		<p><input type=\"submit\" name=\"submit\" value=\"Add Post\"></p>
 		</form>
 		</body>

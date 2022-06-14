@@ -82,7 +82,7 @@ if (!$do_page) {
 		<textarea name=\"topic_description\" rows=\"4\" cols=\"40\" wrap=\"virtual\"></textarea>
 		<p><strong>First Post Message:</strong><br/>
 		<textarea name=\"post_text\" rows=\"8\" cols=\"40\" wrap=\"virtual\"></textarea>
-		<input type=\"hidden\" name=\"category_id\" value=\"".$category_id."\">		
+		<input type=\"hidden\" name=\"category_id\" value=\"$category_id\">		
 		<p><input type=\"submit\" name=\"submit\" value=\"Add Topic\"></p>
 		</form>
 		</body>
