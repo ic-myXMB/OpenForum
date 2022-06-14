@@ -21,6 +21,13 @@ if ((!$_POST["topic_owner"]) || (!$_POST["topic_title"]) || (!$_POST["post_text"
 
 }
 
+// inputs
+
+$_POST["topic_owner"] = htmlspecialchars($_POST["topic_owner"]);
+$_POST["topic_title"] = htmlspecialchars($_POST["topic_title"]);
+$_POST["topic_description"] = htmlspecialchars($_POST["topic_description"]);
+$_POST["post_text"] = htmlspecialchars($_POST["post_text"]);
+
 // create and issue the first query
 
 $add_topic_sql = "INSERT INTO forum_topics (topic_title, topic_description, topic_create_time, topic_owner) VALUES ('".$_POST["topic_title"]."','".$_POST["topic_description"]."', now(), '".$_POST["topic_owner"]."')";

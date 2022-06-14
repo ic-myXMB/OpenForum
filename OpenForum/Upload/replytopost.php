@@ -129,6 +129,11 @@ if (!$_POST) {
 		exit;
 		
 	}
+    
+    // inputs
+    
+	$_POST["post_owner"] = htmlspecialchars($_POST["post_owner"]);
+	$_POST["post_text"] = htmlspecialchars($_POST["post_text"]);
 
 	// add the post
 
