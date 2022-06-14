@@ -234,6 +234,11 @@ if (!$do_page) {
 
 	}
 
+	// inputs
+	
+    $p_owner_p = htmlspecialchars($p_owner_p);
+	$p_text_p = htmlspecialchars($p_text_p);
+
 	// add the post
 
 	$add_post_sql = "INSERT INTO forum_posts (topic_id, category_id, post_text, post_create_time, post_owner) VALUES ('".$t_id_p."', '".$c_id_p."', '".$p_text_p."', now(), '".$p_owner_p."')";

@@ -70,6 +70,12 @@ if (!$do_page) {
 
 	}
 
+    // inputs
+    
+	$t_title_p = htmlspecialchars($t_title_p);
+    $t_description_p = htmlspecialchars($t_description_p);
+    $p_text_p = htmlspecialchars($p_text_p);
+
 	// create and issue the first query
 
 	$add_topic_sql = "INSERT INTO forum_topics (topic_title, topic_description, topic_create_time, topic_owner) VALUES ('".$t_title_p."', '".$t_description_p."', now(), '".$t_owner_p."')";

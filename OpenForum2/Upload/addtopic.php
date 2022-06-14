@@ -222,6 +222,12 @@ if (!$do_page) {
 
 	}
 
+    // inputs
+    
+	$t_title_p = htmlspecialchars($t_title_p);
+    $t_description_p = htmlspecialchars($t_description_p);
+    $p_text_p = htmlspecialchars($p_text_p);	
+
     // create and issue the first query
 
 	// add the topic

@@ -193,6 +193,15 @@ else if ($do_page) {
 		exit;
 		
 	}
+    
+    // inputs
+    
+    $c_owner_p = htmlspecialchars($c_owner_p);
+	$c_title_p = htmlspecialchars($c_title_p);
+	$c_description_p = htmlspecialchars($c_description_p);
+	$t_title_p = htmlspecialchars($t_title_p);
+    $t_description_p = htmlspecialchars($t_description_p);
+    $p_text_p = htmlspecialchars($p_text_p);
 
     // create and issue the first query
 
