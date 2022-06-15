@@ -191,7 +191,8 @@ if (mysqli_num_rows($verify_topic_res) < 1) {
 		<input class=\"form-check-input\" type=\"checkbox\" id=\"lightSwitch\" />
 		</div>
 		</div>
-		<h1 class=\"mt-1\"><i class=\"fa-solid fa-comment-dots\"></i>Posts in: ".$topic_title."</h1>";
+		<h1 class=\"mt-1\"><i class=\"fa-solid fa-comment-dots\"></i>
+		Posts in: ".$topic_title."</h1>";
         
         echo $display_block;
 
