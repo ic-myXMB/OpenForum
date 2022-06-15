@@ -1,7 +1,7 @@
 <?php
 /*
-OpenForum - A basic open forum
-Authors - Julie Meloni & ic-myXMB
+OpenForum2 - A basic open forum
+Authors - (base source) - Julie Meloni & ic-myXMB
 Show Topic
 This is the showtopic.php
 */

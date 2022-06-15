@@ -1,6 +1,6 @@
 <?php
 /*
-OpenForum - A basic open forum
+OpenForum2 - (base source) - A basic open forum
 Authors - Julie Meloni & ic-myXMB
 Category List
 This is the index.php

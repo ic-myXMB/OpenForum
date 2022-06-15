@@ -1,6 +1,6 @@
 <?php
 /*
-OpenForum - A basic open forum
+OpenForum - (base source) - A basic open forum
 Authors - Julie Meloni & ic-myXMB
 Reply to Post
 This is the replytopost.php
