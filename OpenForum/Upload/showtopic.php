@@ -105,6 +105,10 @@ if (mysqli_num_rows($verify_topic_res) < 1) {
 		$post_create_time = $posts_info['fmt_post_create_time'];
 		$post_owner = stripslashes($posts_info['post_owner']);
 
+        // remove tags display in post_text
+
+		$post_text = html_entity_decode($post_text);
+		
 		// add to display
 
 	 	$display_block .= "
@@ -151,7 +155,11 @@ if (mysqli_num_rows($verify_topic_res) < 1) {
 		<!-- Bootstrap CSS -->
 		<link href=\"inc/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">
 		<!-- Font Awesome CSS -->
-		<link href=\"inc/fontawesome/css/all.min.css\" rel=\"stylesheet\">   
+		<link href=\"inc/fontawesome/css/all.min.css\" rel=\"stylesheet\">
+		<style>
+		 img { max-width: 100%; height: 100%; object-fit: cover; } 
+         iframe { max-width: 100%; max-height: 100%; object-fit: contain; }
+		</style> 		   
 		</head>
 		<!-- Navbar -->
 		<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">

@@ -73,7 +73,14 @@ if (!$do_page) {
 		<!-- Bootstrap CSS -->
 		<link href=\"inc/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">
 		<!-- Font Awesome CSS -->
-		<link href=\"inc/fontawesome/css/all.min.css\" rel=\"stylesheet\">   
+		<link href=\"inc/fontawesome/css/all.min.css\" rel=\"stylesheet\">
+		<!-- TinyMCE --> 
+		<script src=\"inc/tinymce/tinymce.min.js\"></script>
+		<script src=\"inc/tinymce/init.js\"></script>
+		<style>
+		 img { max-width: 100%; height: 100%; object-fit: cover; } 
+         iframe { max-width: 100%; max-height: 100%; object-fit: contain; }
+		</style> 				   
 		</head>
 		<body>
 		<!-- Navbar -->
