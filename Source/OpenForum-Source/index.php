@@ -33,7 +33,7 @@ if (mysqli_num_rows($get_topics_res) < 1) {
 	// create the display string
 
 	$display_block = "	
-		<p>Showing all categories in the <strong>Forum</strong>:</p>
+		<p>Showing all topics in the <strong>Forum</strong>:</p>
 		<table width=\"100%\" cellpadding=\"3\" cellspacing=\"1\" border=\"1\">
 		<tr>
 		<th>TOPIC TITLE</th>

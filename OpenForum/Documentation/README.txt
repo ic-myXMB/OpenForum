@@ -23,7 +23,7 @@ Instructions:
 
 Setup:
 
-upload files contained in the "Upload" directory:
+upload files contained within the "Upload" directory:
 
 Edit:
 
@@ -31,21 +31,23 @@ config/connect.php
 
 you only need to edit this:
 
-// edit DBuserName, DBuserPassword, DBdatabaseName to reflect your details
+// edit testUser, testPassword, testDB to reflect your details
 
-$mysqli = mysqli_connect("localhost", "DBuserName", "DBuserPassword", "DBdatabaseName");
+// connect to server and select database
+
+$mysqli = mysqli_connect("localhost", "testUser", "testPassword", "testDB");
 
 * to reflect your database user name , your database name and your database user password.
 
 
-then you need to install database:
+then you need to install database tables:
 
-In the "SQL" directory:
+In your browser visit:
 
-You will find a file called:
+db-install.php
 
-db.sql 
+to install the db tables.
 
-This contains the database information to install the forum_topics and forum_posts tables.
+That is it! Simple enough, right?! Hopefully you may find such of interest or usage.
 
 Best of luck!

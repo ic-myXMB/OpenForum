@@ -1,6 +1,6 @@
 <?php
 /*
-OpenForum - A basic open forum
+OpenForum2 - A basic open forum
 Authors - Julie Meloni & ic-myXMB
 Category List
 This is the index.php
@@ -36,8 +36,8 @@ if (mysqli_num_rows($get_categories_res) < 1) {
 		<p>Showing all categories in the <strong>Forum</strong>:</p>
 		<table width=\"100%\" cellpadding=\"3\" cellspacing=\"1\" border=\"1\" class=\"table table-responsive\">
 		<tr>
-		<th>CATEGORY TITLE</th>
-		<th class=\"text-center\"># of TOPICS</th>
+		<th>CATEGORY</th>
+		<th class=\"text-center\">TOPICS</th>
 		</tr>";
 
 	while ($category_info = mysqli_fetch_array($get_categories_res)) {

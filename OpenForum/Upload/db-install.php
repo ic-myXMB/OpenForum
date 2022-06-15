@@ -1,6 +1,6 @@
 <?php
 /*
-OpenForum2 - A basic open forum
+OpenForum - A basic open forum
 Authors - Julie Meloni & ic-myXMB
 DB Install
 This is the db-install.php
@@ -24,7 +24,7 @@ function install_dbs() {
 
  // verify a table exists or not
 
- $verify_sql = "SHOW TABLES LIKE 'forum_categories'";
+ $verify_sql = "SHOW TABLES LIKE 'forum_topics'";
 
  // verify result
 
@@ -191,10 +191,10 @@ function dbs_installed() {
 		<div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
 		<ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">
 		<li class=\"nav-item\">
-		<a class=\"nav-link active\" aria-current=\"page\" href=\"index.php\">Categories</a>
+		<a class=\"nav-link active\" aria-current=\"page\" href=\"index.php\">Topics</a>
 		</li>
 		<li class=\"nav-item\">
-		<a class=\"nav-link\" href=\"addcategory.php\">Add Category</a>
+		<a class=\"nav-link\" href=\"addtopic.php\">Add Topic</a>
 		</li>
 		</div>
 		</div>

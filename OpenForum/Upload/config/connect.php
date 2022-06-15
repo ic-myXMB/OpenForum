@@ -1,7 +1,8 @@
 <?php
 /*
-OpenForum
-DB Connect
+OpenForum - A basic open forum
+Authors - Julie Meloni & ic-myXMB
+Connection
 This is the connect.php
 */
 
@@ -18,16 +19,15 @@ function doDB() {
 
 	// connect to server and select database
 
-	// edit DBuserName, DBuserPassword, DBdatabaseName to reflect your details
-
-	$mysqli = mysqli_connect("localhost", "DBuserName", "DBuserPassword", "DBdatabaseName");
+	$mysqli = mysqli_connect("localhost", "testUser", "testPassword", "testDB");
 
 	// if connection fails, stop script execution
 
 	if (mysqli_connect_errno()) {
-		
+
 		printf("Connect failed: %s\n", mysqli_connect_error());
 		exit();
+
 	}
 }
 

@@ -1,6 +1,6 @@
 <?php
 /*
-OpenForum - A basic open forum
+OpenForum2 - A basic open forum
 Authors - Julie Meloni & ic-myXMB
 Connection
 This is the connect.php

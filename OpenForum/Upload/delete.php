@@ -1,6 +1,6 @@
 <?php
 /*
-OpenForum2 - A basic open forum
+OpenForum - A basic open forum
 Authors - Julie Meloni & ic-myXMB
 Delete Post
 This is the delete.php
@@ -67,17 +67,16 @@ if (isset($p_id_p)) {
 	// create a nice message for the user
 
 	$display_block = "
-		<!DOCTYPE html>
-		<html lang=\"en\">
-		<meta charset=\"UTF-8\">
-		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
-		<title>Deleted Post in: ".$t_title_p."</title>
+	<!DOCTYPE html>
+	<html lang=\"en\">
+	<meta charset=\"UTF-8\">
+	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+	<title>Deleted Post in: ".$t_title_p."</title>
 		<!-- Bootstrap CSS -->
 		<link href=\"inc/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">
 		<!-- Font Awesome CSS -->
 		<link href=\"inc/fontawesome/css/all.min.css\" rel=\"stylesheet\">   
 		</head>
-		<body>
 		<!-- Navbar -->
 		<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
 		<div class=\"container-fluid\">
@@ -88,16 +87,16 @@ if (isset($p_id_p)) {
 		<div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
 		<ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">
 		<li class=\"nav-item\">
-		<a class=\"nav-link active\" aria-current=\"page\" href=\"index.php\">Categories</a>
+		<a class=\"nav-link active\" aria-current=\"page\" href=\"index.php\">Topics</a>
 		</li>
 		<li class=\"nav-item\">
-		<a class=\"nav-link\" href=\"addcategory.php\">Add Category</a>
+		<a class=\"nav-link\" href=\"addtopic.php\">Add Topic</a>
 		</li>
 		</div>
 		</div>
 		</nav>
-		<div class=\"container\">		
-        <div class=\"row\">		
+        <div class=\"container\">		
+        <div class=\"row\">	
         <!-- LIGHT SWITCH -->
 		<div class=\"d-flex\">
 		<div class=\"form-check form-switch ms-auto mt-3 me-3\">
@@ -110,25 +109,24 @@ if (isset($p_id_p)) {
 		class=\"bi bi-brightness-high\"
 		viewBox=\"0 0 16 16\">
 		<path
-		d=\"M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z\"
-              />
+		d=\"M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z\" />
 		</svg>
 		</label>
 		<input class=\"form-check-input\" type=\"checkbox\" id=\"lightSwitch\" />
 		</div>
-		</div>		
+		</div>
 		<h1 class=\"mt-1\"><i class=\"fa-solid fa-comment-dots\"></i> Deleted Post in: ".$t_title_p."</h1>
-		<div class=\"alert alert-success\" role=\"alert\">The post by: <strong>".$p_owner_p."</strong> has been deleted.</div>";
+	    <div class=\"alert alert-success\" role=\"alert\">The post by: <strong>".$p_owner_p."</strong> has been deleted.</div>";
 
-		echo $display_block;
+	echo $display_block;
 
-		// redirect user to topic
+	// redirect user to topic
 	
-		header( "Refresh:3; url= showtopic.php?topic_id=".$t_id_p, true, 303);
+    header( "Refresh:3; url= showtopic.php?topic_id=".$t_id_p, true, 303);
 
     $display_block = "
-		</div>
-		</div>
+        </div>
+        </div>
 		<!-- Footer -->
 		<div class=\"container\">
 		<footer class=\"bg-light py-3 my-4\">
@@ -136,7 +134,7 @@ if (isset($p_id_p)) {
 		<!--
 		<li class=\"nav-item\"><a href=\"#\" class=\"nav-link px-2 text-secondary\">Link</a></li>
 		<li class=\"nav-item\"><a href=\"#\" class=\"nav-link px-2 text-secondary\">Link</a></li>
-		<li class=\"nav-item\"><a href=\"#\" class=\"nav-link px-2 text-secondary\">Link</a></li>
+ 		<li class=\"nav-item\"><a href=\"#\" class=\"nav-link px-2 text-secondary\">Link</a></li>
 		<li class=\"nav-item\"><a href=\"#\" class=\"nav-link px-2 text-secondary\">Link</a></li>
 		-->
 		</ul>
@@ -146,9 +144,7 @@ if (isset($p_id_p)) {
 		<!-- Bootstrap JS -->
 		<script src=\"inc/bootstrap/js/bootstrap.bundle.min.js\"></script>
 		<!-- Light Switch -->
-		<script src=\"inc/switch.js\"></script>		
-		</body>
-		</html>";
+		<script src=\"inc/switch.js\"></script>";
 
 	echo $display_block;
 

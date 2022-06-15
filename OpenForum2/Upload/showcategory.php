@@ -1,6 +1,6 @@
 <?php
 /*
-OpenForum - A basic open forum
+OpenForum2 - A basic open forum
 Authors - Julie Meloni & ic-myXMB
 Show Category
 This is the showcategory.php
@@ -65,8 +65,8 @@ if (mysqli_num_rows($verify_category_res) < 1) {
 		<p>Showing topics for the <strong>".$category_title."</strong> category:</p>
 		<table width=\"100%\" cellpadding=\"3\" cellspacing=\"1\" border=\"1\" class=\"table table-responsive\">
 		<tr>
-		<th>TOPIC TITLE</th>
-		<th class=\"text-center\"># of POSTS</th>
+		<th>TOPIC</th>
+		<th class=\"text-center\">POSTS</th>
 		</tr>";
 
 	while ($topics_info = mysqli_fetch_array($get_topics_res)) {
