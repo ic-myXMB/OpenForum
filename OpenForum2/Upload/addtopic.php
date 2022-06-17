@@ -28,22 +28,23 @@ if (!$do_page) {
 
 	// GET
 
-	// category
+	// escape user inputs for security
 
-	$c_id_g = $_GET["category_id"];
+    $category_id = mysqli_real_escape_string($mysqli, $_GET["category_id"]);		
 
-	if (!isset($c_id_g)) {
+	if (!isset($category_id)) {
 
         // redirect
 
 		header("Location: index.php");
+
 		exit;
 
 	}
 
 	// still have to verify the category
 
-	$verify_sql = "SELECT category_id, category_title FROM forum_categories WHERE category_id = '".$c_id_g."'";
+	$verify_sql = "SELECT category_id, category_title FROM forum_categories WHERE category_id = '$category_id'";
 
 	$verify_res = mysqli_query($mysqli, $verify_sql) or die(mysqli_error($mysqli));
 
@@ -52,6 +53,7 @@ if (!$do_page) {
 		// this category does not exist
 
 		header("Location: index.php");
+
 		exit;
 
 	} else {
@@ -59,8 +61,10 @@ if (!$do_page) {
 		// get the category id and title
 
 		while($category_info = mysqli_fetch_array($verify_res)) {
+
 			$category_id = $category_info['category_id'];
 			$category_title = stripslashes($category_info['category_title']);
+
 		}
 
 		// echo form page
@@ -189,6 +193,7 @@ if (!$do_page) {
 		<script src=\"inc/switch.js\"></script>		
 		</body>
 		</html>";
+
 	}
 
 	// free result
@@ -205,49 +210,41 @@ if (!$do_page) {
 
 	// POST
 
-	// category
+	// escape user inputs for security
 
-	$c_id_p = $_POST["category_id"];
-    
-    // topic
+    $category_id = mysqli_real_escape_string($mysqli, $_POST["category_id"]);		
+    $topic_title = mysqli_real_escape_string($mysqli, $_POST["topic_title"]);
+    $topic_description = mysqli_real_escape_string($mysqli, $_POST["topic_description"]);
+    $topic_owner = mysqli_real_escape_string($mysqli, $_POST["topic_owner"]); 
+    $post_text = mysqli_real_escape_string($mysqli, $_POST["post_text"]);           
 
-    $t_title_p = $_POST["topic_title"];
-    $t_description_p = $_POST["topic_description"];
-    $t_owner_p = $_POST["topic_owner"];
-
-    // post
-
-    $p_text_p = $_POST["post_text"];
-
-
-	if ((!$t_owner_p) || (!$c_id_p) || (!$t_title_p) || (!$t_description_p) || (!$p_text_p)) {
+	if ((!$topic_owner) || (!$category_id) || (!$topic_title) || (!$topic_description) || (!$post_text)) {
 
 		// redirect
 
 		header("Location: index.php");
+
 		exit;
 
 	}
 
     // inputs
     
-	$t_title_p = htmlspecialchars($t_title_p);
-    $t_description_p = htmlspecialchars($t_description_p);
-    $p_text_p = htmlspecialchars($p_text_p);	
+	$topic_title = htmlspecialchars($topic_title);
+    $topic_description = htmlspecialchars($topic_description);
+    $post_text = htmlspecialchars($post_text);	
 
     // create and issue the first query
 
 	// add the topic
 
-	$add_topic_sql = "INSERT INTO forum_topics (category_id, topic_title, topic_description, topic_create_time, topic_owner) VALUES ('".$c_id_p."', '".$t_title_p."', '".$t_description_p."', now(), '".$t_owner_p."')";
+	$add_topic_sql = "INSERT INTO forum_topics (category_id, topic_title, topic_description, topic_create_time, topic_owner) VALUES ('$category_id', '$topic_title', '$topic_description', now(), '$topic_owner')";
 		
 	$add_topic_res = mysqli_query($mysqli, $add_topic_sql) or die(mysqli_error($mysqli));
 
 	// get the id of the last query
 
 	// topic id
-
-    //$t_id_p =  mysqli_insert_id($mysqli);
     
 	$topic_id = mysqli_insert_id($mysqli);
 
@@ -255,7 +252,7 @@ if (!$do_page) {
 
 	// add the post
 
-	$add_post_sql = "INSERT INTO forum_posts (topic_id, category_id, post_text, post_create_time, post_owner) VALUES ('".$topic_id."', '".$c_id_p."', '".$p_text_p."', now(), '".$t_owner_p."')";
+	$add_post_sql = "INSERT INTO forum_posts (topic_id, category_id, post_text, post_create_time, post_owner) VALUES ('$topic_id', '$category_id', '$post_text', now(), '$topic_owner')";
 		
 	$add_post_res = mysqli_query($mysqli, $add_post_sql) or die(mysqli_error($mysqli));
 
@@ -317,14 +314,11 @@ if (!$do_page) {
 		</div>
 		</div>		
 		<h1 class=\"mt-1\"><i class=\"fa-solid fa-comment-dots\"></i> New Topic added</h1>
-		<div class=\"alert alert-success\" role=\"alert\">The <strong>".$t_title_p."</strong> topic has been created.</div>";
+		<div class=\"alert alert-success\" role=\"alert\">The <strong>".$topic_title."</strong> topic has been created.</div>";
 
 	echo $display_block;
 
 		// redirect user to topic
-	
-		//header("Location: showtopic.php?topic_id=".$topic_id);
-		//exit;
 	
 		header( "Refresh:3; url= showtopic.php?topic_id=".$topic_id, true, 303);
 

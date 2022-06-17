@@ -148,36 +148,34 @@ if (!$do_page) {
 
 	// POST
 
-	// topic
+	// escape user inputs for security
 
-    $t_title_p = $_POST["topic_title"];
-    $t_description_p = $_POST["topic_description"];
-    $t_owner_p = $_POST["topic_owner"];
-
-	// post
-
-    $p_text_p = $_POST["post_text"];
+    $topic_title = mysqli_real_escape_string($mysqli, $_POST["topic_title"]);	
+    $topic_description = mysqli_real_escape_string($mysqli, $_POST["topic_description"]);	
+    $topic_owner = mysqli_real_escape_string($mysqli, $_POST["topic_owner"]);
+    $post_text = mysqli_real_escape_string($mysqli, $_POST["post_text"]);	    	
 
 	// check for required items from form
 
-	if ((!$t_owner_p) || (!$t_title_p) || (!$t_description_p) || (!$p_text_p)) {
+	if ((!$topic_owner) || (!$topic_title) || (!$topic_description) || (!$post_text)) {
         
         // redirect
 
 		header("Location: addtopic.php");
+
 		exit;
 
 	}
 
     // inputs
     
-	$t_title_p = htmlspecialchars($t_title_p);
-    $t_description_p = htmlspecialchars($t_description_p);
-    $p_text_p = htmlspecialchars($p_text_p);
+	$topic_title = htmlspecialchars($topic_title);
+    $topic_description = htmlspecialchars($topic_description);
+    $post_text = htmlspecialchars($post_text);
 
 	// create and issue the first query
 
-	$add_topic_sql = "INSERT INTO forum_topics (topic_title, topic_description, topic_create_time, topic_owner) VALUES ('".$t_title_p."', '".$t_description_p."', now(), '".$t_owner_p."')";
+	$add_topic_sql = "INSERT INTO forum_topics (topic_title, topic_description, topic_create_time, topic_owner) VALUES ('$topic_title', '$topic_description', now(), '$topic_owner')";
 		
 	$add_topic_res = mysqli_query($mysqli, $add_topic_sql) or die(mysqli_error($mysqli));
 
@@ -187,7 +185,7 @@ if (!$do_page) {
 
 	// create and issue the second query
 
-	$add_post_sql = "INSERT INTO forum_posts (topic_id, post_text, post_create_time, post_owner) VALUES ('".$topic_id."', '".$p_text_p."', now(), '".$t_owner_p."')";
+	$add_post_sql = "INSERT INTO forum_posts (topic_id, post_text, post_create_time, post_owner) VALUES ('$topic_id', '$post_text', now(), '$topic_owner')";
 		
 	$add_post_res = mysqli_query($mysqli, $add_post_sql) or die(mysqli_error($mysqli));
 
@@ -249,7 +247,7 @@ if (!$do_page) {
 		</div>
 		</div>
 		<h1 class=\"mt-1\"><i class=\"fa-solid fa-comment-dots\"></i> New Topic added</h1>
-		<div class=\"alert alert-success\" role=\"alert\">The <strong>".$t_title_p."</strong> topic has been created.</div>";
+		<div class=\"alert alert-success\" role=\"alert\">The <strong>".$topic_title."</strong> topic has been created.</div>";
 
     echo $display_block;
 

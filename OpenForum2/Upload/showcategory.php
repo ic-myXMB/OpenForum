@@ -20,20 +20,23 @@ doDB();
 
 // IF GET
 
-$c_id_g = $_GET["category_id"];
+// escape user inputs for security
 
-if (!isset($c_id_g)) {
+$category_id = mysqli_real_escape_string($mysqli, $_GET["category_id"]);
+
+if (!isset($category_id)) {
 
     // redirect
 
 	header("Location: index.php");
+
 	exit;
 
 }
 
 // verify the category exists
 
-$verify_category_sql = "SELECT category_title FROM forum_categories WHERE category_id = '".$c_id_g."'";
+$verify_category_sql = "SELECT category_title FROM forum_categories WHERE category_id = '$category_id'";
 
 $verify_category_res =  mysqli_query($mysqli, $verify_category_sql) or die(mysqli_error($mysqli));
 
@@ -49,13 +52,14 @@ if (mysqli_num_rows($verify_category_res) < 1) {
 	// get the category title
 
 	while ($category_info = mysqli_fetch_array($verify_category_res)) {
+
 		$category_title = stripslashes($category_info['category_title']);
 
 	}
 
 	// gather the topics
 
-	$get_topics_sql = "SELECT topic_id, topic_title, topic_description, DATE_FORMAT(topic_create_time, '%b %e %Y at %r') AS fmt_topic_create_time, topic_owner FROM forum_topics WHERE category_id = '".$c_id_g."' ORDER BY topic_create_time ASC";
+	$get_topics_sql = "SELECT topic_id, topic_title, topic_description, DATE_FORMAT(topic_create_time, '%b %e %Y at %r') AS fmt_topic_create_time, topic_owner FROM forum_topics WHERE category_id = '$category_id' ORDER BY topic_create_time ASC";
 	
 	$get_topics_res = mysqli_query($mysqli, $get_topics_sql) or die(mysqli_error($mysqli));
 
@@ -80,12 +84,14 @@ if (mysqli_num_rows($verify_category_res) < 1) {
 
 		// get number of posts
 
-		$get_num_posts_sql = "SELECT COUNT(post_id) AS post_count FROM forum_posts WHERE topic_id = '".$topic_id."'";
+		$get_num_posts_sql = "SELECT COUNT(post_id) AS post_count FROM forum_posts WHERE topic_id = '$topic_id'";
 		
 		$get_num_posts_res = mysqli_query($mysqli, $get_num_posts_sql) or die(mysqli_error($mysqli));
 
 		while ($posts_info = mysqli_fetch_array($get_num_posts_res)) {
+
 			$num_posts = $posts_info['post_count'];
+
 		}
 
 		// add to display
@@ -118,12 +124,16 @@ if (mysqli_num_rows($verify_category_res) < 1) {
 
 // if empty
 if (empty($category_title)) {
+
 	$category_title = '';
+
 }
 
 // if empty
-if (empty($c_id_g)) {
-	$c_id_g = '';
+if (empty($category_id)) {
+
+	$category_id = '';
+
 }
 
 	    // echo page
@@ -185,7 +195,7 @@ if (empty($c_id_g)) {
 		echo"
 		<div class=\"d-flex\">
 		<p><a class=\"btn btn-primary m-1\" href=\"index.php\" role=\"button\"><i class=\"fa-solid fa-list\"></i> Category List</a></p>		
-		<p><a class=\"btn btn-primary m-1\" href=\"addtopic.php?category_id=".$c_id_g."\" role=\"button\"><i class=\"fa-solid fa-plus\"></i> Add Topic</a></p>
+		<p><a class=\"btn btn-primary m-1\" href=\"addtopic.php?category_id=".$category_id."\" role=\"button\"><i class=\"fa-solid fa-plus\"></i> Add Topic</a></p>
 		</div>
 		</div>
 		</div>
@@ -211,4 +221,3 @@ if (empty($c_id_g)) {
 		</html>";
 
 ?>
-

@@ -140,8 +140,6 @@ if (mysqli_num_rows($verify_topic_res) < 1) {
 
 	$display_block .= "</table>";
 
-	//$topic_id = $_GET["topic_id"];
-
 }
 
 	    // echo page
