@@ -36,7 +36,7 @@ if (!isset($category_id)) {
 
 // verify the category exists
 
-$verify_category_sql = "SELECT category_title FROM forum_categories WHERE category_id = '$category_id'";
+$verify_category_sql = "SELECT category_title FROM forum_categories WHERE category_id = '".$category_id."'";
 
 $verify_category_res =  mysqli_query($mysqli, $verify_category_sql) or die(mysqli_error($mysqli));
 
@@ -59,7 +59,7 @@ if (mysqli_num_rows($verify_category_res) < 1) {
 
 	// gather the topics
 
-	$get_topics_sql = "SELECT topic_id, topic_title, topic_description, DATE_FORMAT(topic_create_time, '%b %e %Y at %r') AS fmt_topic_create_time, topic_owner FROM forum_topics WHERE category_id = '$category_id' ORDER BY topic_create_time ASC";
+	$get_topics_sql = "SELECT topic_id, topic_title, topic_description, DATE_FORMAT(topic_create_time, '%b %e %Y at %r') AS fmt_topic_create_time, topic_owner FROM forum_topics WHERE category_id = '".$category_id."' ORDER BY topic_create_time ASC";
 	
 	$get_topics_res = mysqli_query($mysqli, $get_topics_sql) or die(mysqli_error($mysqli));
 
@@ -84,7 +84,7 @@ if (mysqli_num_rows($verify_category_res) < 1) {
 
 		// get number of posts
 
-		$get_num_posts_sql = "SELECT COUNT(post_id) AS post_count FROM forum_posts WHERE topic_id = '$topic_id'";
+		$get_num_posts_sql = "SELECT COUNT(post_id) AS post_count FROM forum_posts WHERE topic_id = '".$topic_id."'";
 		
 		$get_num_posts_res = mysqli_query($mysqli, $get_num_posts_sql) or die(mysqli_error($mysqli));
 
