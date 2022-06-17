@@ -175,7 +175,7 @@ if (!$do_page) {
 
 	// create and issue the first query
 
-	$add_topic_sql = "INSERT INTO forum_topics (topic_title, topic_description, topic_create_time, topic_owner) VALUES ('$topic_title', '$topic_description', now(), '$topic_owner')";
+	$add_topic_sql = "INSERT INTO forum_topics (topic_title, topic_description, topic_create_time, topic_owner) VALUES ('".$topic_title."', '".$topic_description."', now(), '".$topic_owner."')";
 		
 	$add_topic_res = mysqli_query($mysqli, $add_topic_sql) or die(mysqli_error($mysqli));
 
@@ -185,7 +185,7 @@ if (!$do_page) {
 
 	// create and issue the second query
 
-	$add_post_sql = "INSERT INTO forum_posts (topic_id, post_text, post_create_time, post_owner) VALUES ('$topic_id', '$post_text', now(), '$topic_owner')";
+	$add_post_sql = "INSERT INTO forum_posts (topic_id, post_text, post_create_time, post_owner) VALUES ('".$topic_id."', '".$post_text."', now(), '".$topic_owner."')";
 		
 	$add_post_res = mysqli_query($mysqli, $add_post_sql) or die(mysqli_error($mysqli));
 

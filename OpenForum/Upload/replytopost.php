@@ -44,7 +44,7 @@ if (!$do_page) {
 
 	// still have to verify topic and post
 
-	$verify_sql = "SELECT ft.topic_id, ft.topic_title FROM forum_posts AS fp LEFT JOIN forum_topics AS ft ON fp.topic_id = ft.topic_id WHERE fp.post_id = '$post_id'";
+	$verify_sql = "SELECT ft.topic_id, ft.topic_title FROM forum_posts AS fp LEFT JOIN forum_topics AS ft ON fp.topic_id = ft.topic_id WHERE fp.post_id = '".$post_id."'";
 
 	$verify_res = mysqli_query($mysqli, $verify_sql) or die(mysqli_error($mysqli));
 
@@ -208,7 +208,7 @@ if (!$do_page) {
 
 	// add the post
 
-	$add_post_sql = "INSERT INTO forum_posts (topic_id, post_text,post_create_time, post_owner) VALUES ('$topic_id', '$post_text', now(), '$post_owner')";
+	$add_post_sql = "INSERT INTO forum_posts (topic_id, post_text,post_create_time, post_owner) VALUES ('".$topic_id."', '".$post_text."', now(), '".$post_owner."')";
 		
 	$add_post_res = mysqli_query($mysqli, $add_post_sql) or die(mysqli_error($mysqli));
 
