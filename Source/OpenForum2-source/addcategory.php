@@ -55,74 +55,65 @@ if (!$do_page) {
 
 else if ($do_page) {
 
+	// escape user inputs for security
 
+    $category_title = mysqli_real_escape_string($mysqli, $_POST["category_title"]);
+    $category_description = mysqli_real_escape_string($mysqli, $_POST["category_description"]);
+    $category_owner = mysqli_real_escape_string($mysqli, $_POST["category_owner"]);
+    $topic_title = mysqli_real_escape_string($mysqli, $_POST["topic_title"]);
+    $topic_description = mysqli_real_escape_string($mysqli, $_POST["topic_description"]);
+    $post_text = mysqli_real_escape_string($mysqli, $_POST["post_text"]);
 
 	// check for required items from form
 
-	// POST
-
-    // category
-    $c_title_p = $_POST["category_title"];
-    $c_description_p = $_POST["category_description"];
-    $c_owner_p = $_POST["category_owner"];
-
-    // topic
-    $t_title_p = $_POST["topic_title"];
-    $t_description_p = $_POST["topic_description"];
-
-    // post
-    $p_text_p = $_POST["post_text"];
-
-	if ((!$c_owner_p) || (!$c_title_p) || (!$c_description_p) || (!$t_title_p) || (!$t_description_p) ||  (!$p_text_p)) {
+	if ((!$category_owner) || (!$category_title) || (!$category_description) || (!$topic_title) || (!$topic_description) ||  (!$post_text)) {
         
         // redirect
         
 		header("Location: addcategory.php");
+
 		exit;
 		
 	}
 
 	// inputs
 	
-    $c_owner_p = htmlspecialchars($c_owner_p);
-	$c_title_p = htmlspecialchars($c_title_p);
-	$c_description_p = htmlspecialchars($c_description_p);
-	$t_title_p = htmlspecialchars($t_title_p);
-    $t_description_p = htmlspecialchars($t_description_p);
-    $p_text_p = htmlspecialchars($p_text_p);
+    $category_owner = htmlspecialchars($category_owner);
+	$category_title = htmlspecialchars($category_title);
+	$category_description = htmlspecialchars($category_description);
+	$topic_title = htmlspecialchars($topic_title);
+    $topic_description = htmlspecialchars($topic_description);
+    $post_text = htmlspecialchars($post_text);
 
     // create and issue the first query
 
 	// add the category
 
-	$add_category_sql = "INSERT INTO forum_categories (category_title, category_description, category_create_time, category_owner) VALUES ('".$c_title_p."', '".$c_description_p."', now(), '".$c_owner_p ."')";
+	$add_category_sql = "INSERT INTO forum_categories (category_title, category_description, category_create_time, category_owner) VALUES ('$category_title', '$category_description_p', now(), '$category_owner')";
 		
 	$add_topic_res = mysqli_query($mysqli, $add_category_sql) or die(mysqli_error($mysqli));
 
 	// get the id of the last query
 
-    //$c_id_p = mysqli_insert_id($mysqli);
 	$category_id = mysqli_insert_id($mysqli);
-
 
     // create and issue the second query
 
 	// add the topic
 
-	$add_category_sql = "INSERT INTO forum_topics (category_id, topic_title, topic_description, topic_create_time, topic_owner) VALUES ('".$category_id."', '".$t_title_p."', '".$t_description_p."', now(), '".$c_owner_p."')";
+	$add_category_sql = "INSERT INTO forum_topics (category_id, topic_title, topic_description, topic_create_time, topic_owner) VALUES ('$category_id', '$topic_title_p', '$topic_description', now(), '$category_owner')";
 		
 	$add_topic_res = mysqli_query($mysqli, $add_category_sql) or die(mysqli_error($mysqli));
 
 	// get the id of the last query
 
-    //$t_id_p = mysqli_insert_id($mysqli);
     $topic_id = mysqli_insert_id($mysqli);
 
 	// create and issue the third query
 
 	// add the post
 
-	$add_post_sql = "INSERT INTO forum_posts (topic_id, category_id, post_text, post_create_time, post_owner) VALUES ('".$topic_id."', '".$category_id."', '".$p_text_p ."', now(), '".$c_owner_p."')";
+	$add_post_sql = "INSERT INTO forum_posts (topic_id, category_id, post_text, post_create_time, post_owner) VALUES ('$topic_id', '$category_id', '$post_text', now(), '$category_owner')";
 		
 	$add_post_res = mysqli_query($mysqli, $add_post_sql) or die(mysqli_error($mysqli));
 
@@ -138,14 +129,11 @@ else if ($do_page) {
 	<title>New Category Added</title>
 	<body>
 	<h1>New Category added</h1>
-	<p>The <strong>".$c_title_p."</strong> category has been created.</p>";
+	<p>The <strong>".$category_title."</strong> category has been created.</p>";
 
 	echo $display_block;
 
 	// redirect user to topic
-	
-	//header("Location: showcategory.php?category_id=".$category_id);
-	//exit;
 	
     header( "Refresh:3; url= showcategory.php?category_id=".$category_id, true, 303);
 

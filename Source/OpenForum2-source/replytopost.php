@@ -26,22 +26,25 @@ if (!$do_page) {
 
 	// GET
 
-	$p_id_g = $_GET["post_id"];
+	// escape user inputs for security
+
+    $post_id = mysqli_real_escape_string($mysqli, $_GET["post_id"]);	
 
 	// showing the form; check for required item in query string
 
-	if (!isset($p_id_g)) {
+	if (!isset($post_id)) {
 
 		// redirect
 
 		header("Location: index.php");
+
 		exit;
 
 	}
 
 	// still have to verify category id
 
-	$verify_cat_sql = "SELECT ft.category_id FROM forum_posts AS fp LEFT JOIN forum_topics AS ft ON fp.category_id = ft.category_id WHERE fp.post_id = '".$p_id_g."'";
+	$verify_cat_sql = "SELECT ft.category_id FROM forum_posts AS fp LEFT JOIN forum_topics AS ft ON fp.category_id = ft.category_id WHERE fp.post_id = '$post_id'";
 
 	$verify_cat_res = mysqli_query($mysqli, $verify_cat_sql) or die(mysqli_error($mysqli));
 
@@ -53,6 +56,7 @@ if (!$do_page) {
 		// redirect
 
 		header("Location: index.php");
+
 		exit;
 
 	}
@@ -67,7 +71,7 @@ if (!$do_page) {
 
 	// still have to verify topic and post
 
-	$verify_sql = "SELECT ft.topic_id, ft.topic_title FROM forum_posts AS fp LEFT JOIN forum_topics AS ft ON fp.topic_id = ft.topic_id WHERE fp.post_id = '".$p_id_g."'";
+	$verify_sql = "SELECT ft.topic_id, ft.topic_title FROM forum_posts AS fp LEFT JOIN forum_topics AS ft ON fp.topic_id = ft.topic_id WHERE fp.post_id = '$post_id'";
 
 	$verify_res = mysqli_query($mysqli, $verify_sql) or die(mysqli_error($mysqli));
 
@@ -78,8 +82,8 @@ if (!$do_page) {
 		// redirect
 
 		header("Location: index.php");
-		exit;
 
+		exit;
 
 	} else {
 
@@ -132,36 +136,31 @@ if (!$do_page) {
 
 	// POST
 
-	// category
+	// escape user inputs for security
 
-	$c_id_p = $_POST["category_id"];
+    $category_id = mysqli_real_escape_string($mysqli, $_POST["category_id"]);
+    $topic_id = mysqli_real_escape_string($mysqli, $_POST["topic_id"]);	
+    $post_text = mysqli_real_escape_string($mysqli, $_POST["post_text"]);
+    $post_owner = mysqli_real_escape_string($mysqli, $_POST["post_owner"]);	
 
-	// topic
-
-	$t_id_p = $_POST["topic_id"];
-
-	// post
-
-    $p_text_p = $_POST["post_text"];
-	$p_owner_p = $_POST["post_owner"];
-
-	if ((!$t_id_p) || (!$c_id_p) || (!$p_text_p) || (!$p_owner_p)) {
+	if ((!$topic_id) || (!$category_id) || (!$post_text) || (!$post_owner)) {
         
         // redirect
         
 		header("Location: index.php");
+
 		exit;
 
 	}
 
 	// inputs
 	
-    $p_owner_p = htmlspecialchars($p_owner_p);
-	$p_text_p = htmlspecialchars($p_text_p);	
+    $post_owner = htmlspecialchars($post_owner);
+	$post_text = htmlspecialchars($post_text);	
 
 	// add the post
 
-	$add_post_sql = "INSERT INTO forum_posts (topic_id, category_id, post_text, post_create_time, post_owner) VALUES ('".$t_id_p."', '".$c_id_p."', '".$p_text_p."', now(), '".$p_owner_p."')";
+	$add_post_sql = "INSERT INTO forum_posts (topic_id, category_id, post_text, post_create_time, post_owner) VALUES ('$topic_id', '$category_id', '$post_text', now(), '$post_owner')";
 		
 	$add_post_res = mysqli_query($mysqli, $add_post_sql) or die(mysqli_error($mysqli));
 
@@ -171,7 +170,8 @@ if (!$do_page) {
 
 	// redirect user to topic
 	
-	header("Location: showtopic.php?topic_id=".$t_id_p);
+	header("Location: showtopic.php?topic_id=".$topic_id);
+
 	exit;
 
 }

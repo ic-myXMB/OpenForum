@@ -36,7 +36,7 @@ if (mysqli_num_rows($get_topics_res) < 1) {
 		<p>Showing all topics in the <strong>Forum</strong>:</p>
 		<table width=\"100%\" cellpadding=\"3\" cellspacing=\"1\" border=\"1\">
 		<tr>
-		<th>TOPIC TITLE</th>
+		<th align=\"left\">TOPIC TITLE</th>
 		<th># of POSTS</th>
 		</tr>";
 
@@ -50,7 +50,7 @@ if (mysqli_num_rows($get_topics_res) < 1) {
 
 		// get number of posts
 
-		$get_num_posts_sql = "SELECT COUNT(post_id) AS post_count FROM forum_posts WHERE topic_id = '".$topic_id."'";
+		$get_num_posts_sql = "SELECT COUNT(post_id) AS post_count FROM forum_posts WHERE topic_id = '$topic_id'";
 		
 		$get_num_posts_res = mysqli_query($mysqli, $get_num_posts_sql) or die(mysqli_error($mysqli));
 
@@ -67,7 +67,7 @@ if (mysqli_num_rows($get_topics_res) < 1) {
 		<td><a href=\"showtopic.php?topic_id=".$topic_id."\"><strong>".$topic_title."</strong></a><br/>
 		".$topic_description."<br/>
 		Created on ".$topic_create_time." by ".$topic_owner."</td>
-		<td align=center>".$num_posts."</td>
+		<td align=\"center\">".$num_posts."</td>
 		</tr>";
 	}
 
@@ -106,4 +106,3 @@ if (mysqli_num_rows($get_topics_res) < 1) {
 		</html>";
 
 ?>
-

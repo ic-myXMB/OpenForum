@@ -20,25 +20,25 @@ doDB();
 
 // IF GET
 
-// topic
+// escape user inputs for security
 
-$t_id_g = $_GET["topic_id"];
+$topic_id = mysqli_real_escape_string($mysqli, $_GET["topic_id"]);
 
-if (!isset($_GET["topic_id"])) {
+if (!isset($topic_id)) {
 
     // redirect
 
 	header("Location: index.php");
+
 	exit;
 
 }
-
 
 // verify the topic exists
 
 // verify topic id exists for the post_id delete form
 
-$verify_topic_id_sql = "SELECT topic_id FROM forum_topics WHERE topic_id = '".$t_id_g."'";
+$verify_topic_id_sql = "SELECT topic_id FROM forum_topics WHERE topic_id = '$topic_id'";
 
 $verify_topic_id_res =  mysqli_query($mysqli, $verify_topic_id_sql) or die(mysqli_error($mysqli));
 
@@ -54,7 +54,9 @@ if (mysqli_num_rows($verify_topic_id_res) < 1) {
 	// get the topic id
 
 	while ($topic_info = mysqli_fetch_array($verify_topic_id_res)) {
+
 		$topic_id = $topic_info['topic_id'];
+
 	}
 }
 
@@ -62,7 +64,7 @@ if (mysqli_num_rows($verify_topic_id_res) < 1) {
 
 // verify the topic title
 
-$verify_topic_sql = "SELECT topic_title FROM forum_topics WHERE topic_id = '".$t_id_g."'";
+$verify_topic_sql = "SELECT topic_title FROM forum_topics WHERE topic_id = '$topic_id'";
 
 $verify_topic_res =  mysqli_query($mysqli, $verify_topic_sql) or die(mysqli_error($mysqli));
 
@@ -85,7 +87,7 @@ if (mysqli_num_rows($verify_topic_res) < 1) {
 
 	// gather the posts
 
-	$get_posts_sql = "SELECT post_id, post_text, DATE_FORMAT(post_create_time, '%b %e %Y at %r') AS fmt_post_create_time, post_owner FROM forum_posts WHERE topic_id = '".$t_id_g."' ORDER BY post_create_time ASC";
+	$get_posts_sql = "SELECT post_id, post_text, DATE_FORMAT(post_create_time, '%b %e %Y at %r') AS fmt_post_create_time, post_owner FROM forum_posts WHERE topic_id = '$topic_id' ORDER BY post_create_time ASC";
 	
 	$get_posts_res = mysqli_query($mysqli, $get_posts_sql) or die(mysqli_error($mysqli));
 
@@ -160,4 +162,3 @@ if (mysqli_num_rows($verify_topic_res) < 1) {
 		</html>";
 		
 ?>
-

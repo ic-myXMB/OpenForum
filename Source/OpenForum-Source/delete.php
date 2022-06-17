@@ -16,13 +16,13 @@ include("config/connect.php");
 
 doDB();
 
-// post 
+// escape user inputs for security
 
-$p_id_p = $_POST["post_id"];
+$post_id = mysqli_real_escape_string($mysqli, $_POST["post_id"]);
 
 // still have to verify topic and post
 
-$verify_sql = "SELECT ft.topic_id, ft.topic_title FROM forum_posts AS fp LEFT JOIN forum_topics AS ft ON fp.topic_id = ft.topic_id WHERE fp.post_id = '".$p_id_p."'";
+$verify_sql = "SELECT ft.topic_id, ft.topic_title FROM forum_posts AS fp LEFT JOIN forum_topics AS ft ON fp.topic_id = ft.topic_id WHERE fp.post_id = '$post_id'";
 
 $verify_res = mysqli_query($mysqli, $verify_sql) or die(mysqli_error($mysqli));
 
@@ -33,36 +33,38 @@ if (mysqli_num_rows($verify_res) < 1) {
 	// redirect
 
 	header("Location: index.php");
+
 	exit;
 
 }
 
 // IF POST
 
+// escape user inputs for security
+
+$post_id = mysqli_real_escape_string($mysqli, $_POST["post_id"]);
+
 // if post_id delete
 
-if (isset($p_id_p)) {
+if (isset($post_id)) {
 
-	$id = (int)$p_id_p;
+	$id = (int)$post_id;
 
 	// query
 
-	$delete_post_id_sql = "DELETE FROM forum_posts WHERE post_id = '".$id."'";
+	$delete_post_id_sql = "DELETE FROM forum_posts WHERE post_id = '$id'";
 
 	// result
 
 	$delete_post_id_res = mysqli_query($mysqli, $delete_post_id_sql) or die(mysqli_erro($mysqli));
 
+	// escape user inputs for security
+
+    $topic_id = mysqli_real_escape_string($mysqli, $_POST["topic_id"]);
+    $topic_title = mysqli_real_escape_string($mysqli, $_POST["topic_title"]);
+    $post_owner = mysqli_real_escape_string($mysqli, $_POST["post_owner"]);
+
 	// IF POST
-
-	// topic
-
-    $t_id_p = $_POST["topic_id"];
-	$t_title_p = $_POST["topic_title"];
-    
-    // post
-
-	$p_owner_p = $_POST["post_owner"];
 
 	// create a nice message for the user
 
@@ -70,16 +72,16 @@ if (isset($p_id_p)) {
 	<!DOCTYPE html>
 	<html lang=\"en\">
 	<meta charset=\"UTF-8\">
-	<title>Deleted Post in: ".$t_title_p."</title>
+	<title>Deleted Post in: ".$topic_title."</title>
 	<body>
-	<h1>Deleted Post in: ".$t_title_p."</h1>
-	<p>The post by: <strong>".$p_owner_p."</strong> has been deleted.</p>";
+	<h1>Deleted Post in: ".$topic_title."</h1>
+	<p>The post by: <strong>".$post_owner."</strong> has been deleted.</p>";
 
 	echo $display_block;
 
 	// redirect user to topic
 	
-    header( "Refresh:3; url= showtopic.php?topic_id=".$t_id_p, true, 303);
+    header( "Refresh:3; url= showtopic.php?topic_id=".$topic_id, true, 303);
 
     $display_block = "
 	</body>

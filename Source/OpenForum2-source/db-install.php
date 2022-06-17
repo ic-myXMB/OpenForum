@@ -132,7 +132,7 @@ function dbs_not_installed() {
 
    // database not installing message
 
-   $_SESSION['message2'] = '<div style="background-color:#F56257;color:#FFFFFF;text-shadow: 2px 2px 4px #000000;border: 1px solid #F1392B;opacity:0.83;transition:opacity 0.6s;margin-bottom:15px;padding:20px;border-radius:3px;">Database was already installed! You can now visit: <a href="index.php" style="color:#FFFFFF;text-shadow: 2px 2px 4px #000000;">Your Site</a> to begin.</div> ';
+   $_SESSION['message2'] = '<div style="background-color:#F56257;color:#FFFFFF;text-shadow: 2px 2px 4px #000000;border: 1px solid #F1392B;opacity:0.83;transition:opacity 0.6s;margin-bottom:15px;padding:20px;border-radius:3px;">Database was already installed! You can now visit: <a href="index.php" style="color:#FFFFFF;text-shadow: 2px 2px 4px #000000;">OpenForum</a> to begin.</div> ';
 
    if (isset($_SESSION['message2'])) {
    
@@ -153,7 +153,7 @@ function dbs_installed() {
 
    // database is installed message
 
-   $_SESSION['message1'] = '<div style="background-color:#04AA6D;color:#FFFFFF;text-shadow: 2px 2px 4px #000000;border: 1px solid #025F3D;opacity:0.83;transition:opacity 0.6s;margin-bottom:15px;padding:20px;border-radius:3px;">Database is installed! You can now visit: <a href="index.php" style="color:#FFFFFF;text-shadow: 2px 2px 4px #000000;">Your Site</a> to begin.</div> ';
+   $_SESSION['message1'] = '<div style="background-color:#04AA6D;color:#FFFFFF;text-shadow: 2px 2px 4px #000000;border: 1px solid #025F3D;opacity:0.83;transition:opacity 0.6s;margin-bottom:15px;padding:20px;border-radius:3px;">Database is installed! You can now visit: <a href="index.php" style="color:#FFFFFF;text-shadow: 2px 2px 4px #000000;">OpenForum</a> to begin.</div> ';
 
    if (isset($_SESSION['message1'])) {
    
