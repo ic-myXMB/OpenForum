@@ -122,7 +122,8 @@ if (mysqli_num_rows($verify_topic_res) < 1) {
 		<input type=\"hidden\" name=\"topic_id\" value=\"$topic_id\">
 		<input type=\"hidden\" name=\"topic_title\" value=\"$topic_title\">		
 		<input type=\"hidden\" name=\"post_id\" value=\"$post_id\">	
-		<input type=\"hidden\" name=\"post_owner\" value=\"$post_owner\">			
+		<input type=\"hidden\" name=\"post_owner\" value=\"$post_owner\">
+		</form>			
 		</td>
 		</tr>";
 
