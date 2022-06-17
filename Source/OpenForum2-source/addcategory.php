@@ -89,7 +89,7 @@ else if ($do_page) {
 
 	// add the category
 
-	$add_category_sql = "INSERT INTO forum_categories (category_title, category_description, category_create_time, category_owner) VALUES ('$category_title', '$category_description_p', now(), '$category_owner')";
+	$add_category_sql = "INSERT INTO forum_categories (category_title, category_description, category_create_time, category_owner) VALUES ('".$category_title."', '".$category_description."', now(), '".$category_owner."')";
 		
 	$add_topic_res = mysqli_query($mysqli, $add_category_sql) or die(mysqli_error($mysqli));
 
@@ -101,7 +101,7 @@ else if ($do_page) {
 
 	// add the topic
 
-	$add_category_sql = "INSERT INTO forum_topics (category_id, topic_title, topic_description, topic_create_time, topic_owner) VALUES ('$category_id', '$topic_title_p', '$topic_description', now(), '$category_owner')";
+	$add_category_sql = "INSERT INTO forum_topics (category_id, topic_title, topic_description, topic_create_time, topic_owner) VALUES ('".$category_id."', '".$topic_title."', '".$topic_description."', now(), '".$category_owner."')";
 		
 	$add_topic_res = mysqli_query($mysqli, $add_category_sql) or die(mysqli_error($mysqli));
 
@@ -113,7 +113,7 @@ else if ($do_page) {
 
 	// add the post
 
-	$add_post_sql = "INSERT INTO forum_posts (topic_id, category_id, post_text, post_create_time, post_owner) VALUES ('$topic_id', '$category_id', '$post_text', now(), '$category_owner')";
+	$add_post_sql = "INSERT INTO forum_posts (topic_id, category_id, post_text, post_create_time, post_owner) VALUES ('".$topic_id."', '".$category_id."', '".$post_text."', now(), '".$category_owner."')";
 		
 	$add_post_res = mysqli_query($mysqli, $add_post_sql) or die(mysqli_error($mysqli));
 

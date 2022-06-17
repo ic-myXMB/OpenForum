@@ -44,7 +44,7 @@ if (!$do_page) {
 
 	// still have to verify the category
 
-	$verify_sql = "SELECT category_id, category_title FROM forum_categories WHERE category_id = '$category_id'";
+	$verify_sql = "SELECT category_id, category_title FROM forum_categories WHERE category_id = '".$category_id."'";
 
 	$verify_res = mysqli_query($mysqli, $verify_sql) or die(mysqli_error($mysqli));
 
@@ -135,7 +135,7 @@ if (!$do_page) {
 
 	// add the topic
 
-	$add_topic_sql = "INSERT INTO forum_topics (category_id, topic_title, topic_description, topic_create_time, topic_owner) VALUES ('$category_id', '$topic_title', '$topic_description', now(), '$topic_owner')";
+	$add_topic_sql = "INSERT INTO forum_topics (category_id, topic_title, topic_description, topic_create_time, topic_owner) VALUES ('".$category_id."', '".$topic_title."', '".$topic_description."', now(), '".$topic_owner."')";
 		
 	$add_topic_res = mysqli_query($mysqli, $add_topic_sql) or die(mysqli_error($mysqli));
 
@@ -149,7 +149,7 @@ if (!$do_page) {
 
 	// add the post
 
-	$add_post_sql = "INSERT INTO forum_posts (topic_id, category_id, post_text, post_create_time, post_owner) VALUES ('$topic_id', '$category_id', '$post_text', now(), '$topic_owner')";
+	$add_post_sql = "INSERT INTO forum_posts (topic_id, category_id, post_text, post_create_time, post_owner) VALUES ('".$topic_id."', '".$category_id."', '".$post_text."', now(), '".$topic_owner."')";
 		
 	$add_post_res = mysqli_query($mysqli, $add_post_sql) or die(mysqli_error($mysqli));
 

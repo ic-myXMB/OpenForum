@@ -36,7 +36,7 @@ if (mysqli_num_rows($get_categories_res) < 1) {
 		<p>Showing all categories in the <strong>Forum</strong>:</p>
 		<table width=\"100%\" cellpadding=\"3\" cellspacing=\"1\" border=\"1\">
 		<tr>
-		<th align="\left\">CATEGORY TITLE</th>
+		<th align=\"left\">CATEGORY TITLE</th>
 		<th># of TOPICS</th>
 		</tr>";
 
@@ -50,7 +50,7 @@ if (mysqli_num_rows($get_categories_res) < 1) {
 
 		// get number of topics
 
-		$get_num_topics_sql = "SELECT COUNT(topic_id) AS topic_count FROM forum_topics WHERE category_id = '$category_id'";
+		$get_num_topics_sql = "SELECT COUNT(topic_id) AS topic_count FROM forum_topics WHERE category_id = '".$category_id."'";
 		
 		$get_num_topics_res = mysqli_query($mysqli, $get_num_topics_sql) or die(mysqli_error($mysqli));
 
