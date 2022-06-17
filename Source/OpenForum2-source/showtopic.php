@@ -97,8 +97,8 @@ if (mysqli_num_rows($verify_topic_res) < 1) {
 		<p>Showing all posts for the <strong>".$topic_title."</strong> topic:</p>
 		<table width=\"100%\" cellpadding=\"3\" cellspacing=\"1\" border=\"1\">
 		<tr>
-		<th>AUTHOR</th>
-		<th>POST</th>
+		<th align=\"left\">AUTHOR</th>
+		<th align=\"left\">POST</th>
 		</tr>";
 
 	while ($posts_info = mysqli_fetch_array($get_posts_res)) {
