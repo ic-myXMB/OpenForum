@@ -173,6 +173,7 @@ function dbs_installed() {
 		echo "		<!DOCTYPE html>
 		<html lang=\"en\">
 		<meta charset=\"UTF-8\">
+		<head>
 		<title>Install Databse</title>
 		</head>
 		<body>

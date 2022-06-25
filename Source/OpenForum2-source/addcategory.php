@@ -124,9 +124,12 @@ else if ($do_page) {
 	// create a nice message for the user
 
 	$display_block = "
-	<html>
+	<!DOCTYPE html>
+	<html lang=\"en\">
+	<meta charset=\"UTF-8\">
 	<head>
 	<title>New Category Added</title>
+	</head>
 	<body>
 	<h1>New Category added</h1>
 	<p>The <strong>".$category_title."</strong> category has been created.</p>";

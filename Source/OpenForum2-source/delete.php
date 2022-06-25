@@ -74,7 +74,9 @@ if (isset($post_id)) {
 	<!DOCTYPE html>
 	<html lang=\"en\">
 	<meta charset=\"UTF-8\">
+	<head>
 	<title>Deleted Post in: ".$topic_title."</title>
+	</head>
 	<body>
 	<h1>Deleted Post in: ".$topic_title."</h1>
 	<p>The post by: <strong>".$post_owner."</strong> has been deleted.</p>";

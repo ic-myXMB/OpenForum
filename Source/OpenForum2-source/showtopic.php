@@ -150,6 +150,7 @@ if (mysqli_num_rows($verify_topic_res) < 1) {
 		echo "		<!DOCTYPE html>
 		<html lang=\"en\">
 		<meta charset=\"UTF-8\">
+		<head>
 		<title>Posts in: ".$topic_title."</title>
 		</head>
 		<body>

@@ -141,6 +141,7 @@ if (empty($category_id)) {
 		echo "		<!DOCTYPE html>
 		<html lang=\"en\">
 		<meta charset=\"UTF-8\">
+		<head>
 		<title>Topics in: ".$category_title."</title>
 		</head>
 		<body>

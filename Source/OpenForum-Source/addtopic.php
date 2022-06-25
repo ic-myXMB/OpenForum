@@ -27,6 +27,7 @@ if (!$do_page) {
 		echo "		<!DOCTYPE html>
 		<html lang=\"en\">
 		<meta charset=\"UTF-8\">
+		<head>
 		<title>Add a Topic</title>
 		</head>
 		<body>
@@ -98,7 +99,9 @@ if (!$do_page) {
 	<!DOCTYPE html>
 	<html lang=\"en\">
 	<meta charset=\"UTF-8\">
+	<head>
 	<title>New Topic Added</title>
+	</head>
 	<body>
 	<h1>New Topic added</h1>
     <p>The <strong>".$topic_title."</strong> topic has been created.</p>";

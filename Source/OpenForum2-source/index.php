@@ -91,6 +91,7 @@ if (mysqli_num_rows($get_categories_res) < 1) {
 		echo "		<!DOCTYPE html>
 		<html lang=\"en\">
 		<meta charset=\"UTF-8\">
+		<head>
 		<title>Categories in: My Forum</title>
 		</head>
 		<body>

@@ -70,6 +70,7 @@ if (!$do_page) {
 		echo "		<!DOCTYPE html>
 		<html lang=\"en\">
 		<meta charset=\"UTF-8\">
+		<head>
 		<title>Post Reply in: ".$topic_title."</title>
 		</head>
 		<body>
