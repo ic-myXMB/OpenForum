@@ -1,4 +1,4 @@
-In the examples the current tinymce version used has depreciated bbcode and as such, bbcode was not factored. In order to do such with tinymce you would have to rollback tinymce to a version that still supported bbcode... for example: tinymce_5.8.2
+NOTE: while tinymce editor is not included in the source folders of the repository, note that in the the repository sections where openforum and openforum2 bootstrap examples reside the examples use the current tinymce versionand such used has depreciated bbcode plugin and as such, bbcode was not factored. In order to do such with tinymce you would have to rollback tinymce to a version that still supported bbcode... for example: tinymce_5.8.2
 
 And then you need to begin to factor regex in your show topic page or page of the sort
 
