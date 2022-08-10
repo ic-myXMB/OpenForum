@@ -1,0 +1,139 @@
+In the examples the current tinymce version use has depreciated become and as such, become was not factored. In order to do such with tinymce you would have to rollback tinymce to a version that still supported bbcode... for example: tinymce_5.8.2
+
+And then you need to begin tofactor regex in your show topic page or page of the sort
+
+And also modify your init to factor for the change in rolling back tinymce version and respective plugins like become plugin and others related to that version if that all makes sense....
+
+ // regex just a start for a very basic example and more would be needed to finalize such but much less than say if you were using sceditor as there are a few things less needed in tinymce like for example one would not need to regex smilies and some other elements that tinymce implemented differently when it still supported the bbcode plugin...
+
+		$regex = array('/\[b\](.*?)\[\/b\]/is' => '<b>$1</b>',
+		'/\[i\](.*?)\[\/i\]/is' => '<i>$1</i>',
+		'/\[u\](.*?)\[\/u\]/is' => '<u>$1</u>',
+		'/\[s\](.*?)\[\/s\]/is' => '<strike>$1</strike>',
+		'/\[sup\](.*?)\[\/sup\]/is' => '<sup>$1</sup>',
+		'/\[sub\](.*?)\[\/sub\]/is' => '<sub>$1</sub>',
+		'/\[color=#([0-9A-F]{6})\](.*?)\[\/color\]/is' => '<font color="#$1">$2</font>',
+		'/\[left\](.*?)\[\/left\]/is' => '<p style="text-align:left">$1</p>',
+		'/\[center\](.*?)\[\/center\]/is' => '<p style="text-align:center">$1</p>',
+		'/\[right\](.*?)\[\/right\]/is' => '<p style="text-align:right">$1</p>',
+
+
+		'/\[img\](.*?)\[\/img\]/is' => '<img src="$1" />',
+		'/\[url\](.*?)\[\/url\]/is' => '<a href="$1">$1</a>',
+	        '/\[url=(https?:\/\/.+?)\](.*?)\[\/url\]/is' => '<a href="$1">$2</a>');
+
+		$post_text = preg_replace(array_keys($regex), array_values($regex), $post_text);
+
+
+
+Now for example if you were implementing sceditor (say sceditor-3.1.1) or what not instead of tinymce:
+
+
+
+
+		<!-- Include the default theme -->
+		<link rel=\"stylesheet\" href=\"inc/sceditor/minified/themes/default.min.css\" />
+
+		<!-- Include the editors JS -->
+		<script src=\"inc/sceditor/minified/sceditor.min.js\"></script>
+
+		<script src=\"inc/sceditor/minified/icons/monocons.js\"></script>
+
+		<!-- Include the BBCode or XHTML formats -->
+		<script src=\"inc/sceditor/minified/formats/bbcode.js\"></script>
+		<!--
+		<script src=\"inc/sceditor/minified/formats/xhtml.js\"></script>
+		-->
+		<script>
+		// load event happens after all resources are loaded for the page.
+		window.addEventListener('load', function () {
+
+		// Replace the textarea #example with SCEditor
+		var textarea = document.getElementById('post_text');
+		sceditor.create(textarea, {
+			format: 'bbcode',
+			icons: 'monocons',
+			emoticonsCompat: true,
+			style: 'inc/sceditor/minified/themes/content/default.min.css'
+		});
+
+		});
+		</script>
+
+
+Such or similar would go in your form page where you editor is included and then for example in your show topic page or what not or whatever pages like such you would then factor regex....
+
+For starting example...
+
+
+        // regex just a start for an example and more would be needed to finalize such
+
+		$regex = array('/\[b\](.*?)\[\/b\]/is' => '<b>$1</b>',
+		'/\[i\](.*?)\[\/i\]/is' => '<i>$1</i>',
+		'/\[u\](.*?)\[\/u\]/is' => '<u>$1</u>',
+		'/\[s\](.*?)\[\/s\]/is' => '<strike>$1</strike>',
+		'/\[sup\](.*?)\[\/sup\]/is' => '<sup>$1</sup>',
+		'/\[sub\](.*?)\[\/sub\]/is' => '<sub>$1</sub>',
+		'/\[color=#([0-9A-F]{6})\](.*?)\[\/color\]/is' => '<font color="#$1">$2</font>',
+		'/\[left\](.*?)\[\/left\]/is' => '<p style="text-align:left">$1</p>',
+		'/\[center\](.*?)\[\/center\]/is' => '<p style="text-align:center">$1</p>',
+		'/\[right\](.*?)\[\/right\]/is' => '<p style="text-align:right">$1</p>',
+
+
+		'/\[url\](.*?)\[\/url\]/is' => "<a href='$1'>$1</a>",
+		'/\[url=(.*?)\](.*?)\[\/url\]/is' => "<a href='$1'>$2</a>",
+		'/\[img\](.*?)\[\/img\]/is' => "<img src='$1' />",
+		
+
+               '/\[youtube\](.*?)\[\/youtube]/is' => '<div class="videoWrapper"><iframe src="//www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe></div>'
+
+
+
+		"/( |^)&lt;3( |$)/" => ' <img src="emoticons/heart.png" alt="" /> ',
+		"/( |^):\(( |$)/" => ' <img src="emoticons/sad.png" alt=""/> ',
+		"/( |^):O( |$)/" => ' <img src="emoticons/shocked.png" alt="" /> ',
+		"/( |^):\)( |$)/" => ' <img src="emoticons/smile.png" alt="" /> ',
+		"/( |^):P( |$)/" => ' <img src="emoticons/tongue.png" alt="" /> ',
+		"/( |^):D( |$)/" => ' <img src="emoticons/grin.png" alt="" /> ',
+		"/( |^)8\-\)( |$)/" => ' <img src="emoticons/cool.png" alt="" /> ',
+		"/( |^);\)( |$)/" => ' <img src="emoticons/wink.png" alt="" /> ',
+		"/( |^):angel:( |$)/" => ' <img src="emoticons/angel.png" alt="" /> ',
+		"/( |^):angry:( |$)/" => ' <img src="emoticons/angry.png" alt="" /> ',
+		"/( |^):ermm:( |$)/" => ' <img src="emoticons/ermm.png" alt="" /> ',
+		"/( |^):cheerful:( |$)/" => ' <img src="emoticons/cheerful.png" alt="" /> ',
+		"/( |^):blush:( |$)/" => ' <img src="emoticons/blush.png" alt="" /> ',
+		"/( |^):alien:( |$)/" => ' <img src="emoticons/alien.png" alt="" /> ',
+		"/( |^):blink:( |$)/" => ' <img src="emoticons/blink.png" alt="" /> ',
+		"/( |^):devil:( |$)/" => ' <img src="emoticons/devil.png" alt="" /> ',
+		"/( |^):dizzy:( |$)/" => ' <img src="emoticons/dizzy.png" alt="" /> ',
+		"/( |^):getlost:( |$)/" => ' <img src="emoticons/getlost.png" alt="" /> ',
+		"/( |^):happy:( |$)/" => ' <img src="emoticons/happy.png" alt="" /> ',
+		"/( |^):kissing:( |$)/" => ' <img src="emoticons/kissing.png" alt="" /> ',
+		"/( |^):ninja:( |$)/" => ' <img src="emoticons/ninja.png" alt="" /> ',
+		"/( |^):pinch:( |$)/" => ' <img src="emoticons/pinch.png" alt="" /> ',
+		"/( |^):pouty:( |$)/" => ' <img src="emoticons/pouty.png" alt="" /> ',
+		"/( |^):sick:( |$)/" => ' <img src="emoticons/sick.png" alt="" /> ',
+		"/( |^):sideways:( |$)/" => ' <img src="emoticons/sideways.png" alt="" /> ',
+		"/( |^):silly:( |$)/" => ' <img src="emoticons/silly.png" alt="" /> ',
+		"/( |^):sleeping:( |$)/" => ' <img src="emoticons/sleeping.png" alt="" /> ',
+		"/( |^):unsure:( |$)/" => ' <img src="emoticons/unsure.png" alt="" /> ',
+		"/( |^):woot:( |$)/" => ' <img src="emoticons/w00t.png" alt="" /> ',
+		"/( |^):wassat:( |$)/" => ' <img src="emoticons/wassat.png" alt="" /> ',
+		"/( |^):whistling:( |$)/" => ' <img src="emoticons/whistling.png" alt="" /> ',
+		"/( |^):love:( |$)/" => ' <img src="emoticons/wub.png" alt="" /> ',		
+
+
+		'/\[img\](.*?)\[\/img\]/is' => '<img src="$1" />',
+		'/\[url\](.*?)\[\/url\]/is' => '<a href="$1">$1</a>',
+	    '/\[url=(https?:\/\/.+?)\](.*?)\[\/url\]/is' => '<a href="$1">$2</a>');
+
+		$post_text = preg_replace(array_keys($regex), array_values($regex), $post_text);
+
+		// remove tags display in post_text
+
+		$post_text = html_entity_decode($post_text);
+
+
+
+
+This is just a brief thought on the matter and while yes I did make example variants with sceditor and older tinymce versions as such in order to implement become, I did not upload them here nor did I complete those variants fully as free time was limited and there was no plan at the time to complete and upload those variant also hence why this thoughts on such was included here instead in case anyone was thinking about doing such themselves if that makes sense. 
