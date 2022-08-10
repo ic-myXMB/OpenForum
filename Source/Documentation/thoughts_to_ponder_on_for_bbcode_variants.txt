@@ -1,6 +1,6 @@
-In the examples the current tinymce version use has depreciated become and as such, become was not factored. In order to do such with tinymce you would have to rollback tinymce to a version that still supported bbcode... for example: tinymce_5.8.2
+In the examples the current tinymce version used has depreciated bbcode and as such, become was not factored. In order to do such with tinymce you would have to rollback tinymce to a version that still supported bbcode... for example: tinymce_5.8.2
 
-And then you need to begin tofactor regex in your show topic page or page of the sort
+And then you need to begin to factor regex in your show topic page or page of the sort
 
 And also modify your init to factor for the change in rolling back tinymce version and respective plugins like become plugin and others related to that version if that all makes sense....
 
