@@ -1,5 +1,5 @@
 
-This contains only the core source of the forum scripts before I then add the bootstrap, font awesome and switch elements.
+This contains only the core source of the forum scripts before I then add the bootstrap, font awesome, tinymce and switch elements.
 
 
 These source folders are here development purposes for if and or when I may make changes to the core source and then eventually will implement such to the actual OpenForum 1 & 2 "Upload" directories.
