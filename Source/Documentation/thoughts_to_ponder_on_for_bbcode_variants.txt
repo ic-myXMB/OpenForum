@@ -136,4 +136,4 @@ For starting example...
 
 
 
-This is just a brief thought on the matter and while yes I did make example variants with sceditor and older tinymce versions as such in order to implement become, I did not upload them here nor did I complete those variants fully as free time was limited and there was no plan at the time to complete and upload those variant also hence why this thoughts on such was included here instead in case anyone was thinking about doing such themselves if that makes sense. 
+This is just a brief thought on the matter and while, yes, I did make example variants with sceditor and older tinymce versions as such in order to implement bbcode just for testing said implementations if desired, I did not upload them here nor did I complete those variants fully as free time was limited and there was no plan at the time to complete and upload those variant also hence why this thoughts on such was included here instead in case anyone was thinking about doing such themselves if that makes sense. 
