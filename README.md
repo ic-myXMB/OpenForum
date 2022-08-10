@@ -14,6 +14,8 @@ This project uses:
 
 * Font Awesome 6.1.1
 
+* TinyMCE 6.0.3 
+
 About:
 
 This simple project is a very basic forum project started after reading an old tutorial by Julie Meloni from say around 2009 or so. For this project we are using bootstrap 5, font awesome 6, php and mysql as well it also has bootstrap light & dark switch mode. This very basic forum is without users or any sort of control panel. It primarily is an open forum that allows you to by submitting your email as your username to either post a topic and first post at once for such. Also as well then after it allows one to reply to those topics. Also for this basic forum it is primarily setup in the following structure of one single forum that contains topics and then posts / replies to such topics. (As this simple forum is without such features as users, user login or admin control, and as such is an open forum,  this is why it is called OpenForum.) 
